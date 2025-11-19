@@ -1,0 +1,7 @@
+Metric,Value
+Best Val Acc,96.98%
+Best EMA Val Acc,96.94%
+Latest Val Acc,96.85%
+Best Val Loss,0.5793
+Latest Val Loss,0.5801
+Epochs Completed,200
