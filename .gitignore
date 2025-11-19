@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data files
+data/
+*.tar.gz
+
+# Model checkpoints and outputs
+runs/
+outputs/
+output*/
+*.ckpt
+*.pth
+*.pt
+
+# Logs
+logs/
+*.log
