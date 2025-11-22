@@ -228,11 +228,16 @@ def main():
     best_acc = 0.0
     if args.resume and os.path.isfile(args.resume):
         print(f"Resuming from checkpoint: {args.resume}")
-        checkpoint = torch.load(args.resume)
+        checkpoint = torch.load(args.resume, weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
         optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
         start_epoch = checkpoint['epoch'] + 1
         best_acc = checkpoint.get('best_acc', 0.0)
+        
+        # Restore EMA state if available
+        if ema is not None and 'ema_shadow' in checkpoint:
+            ema.shadow = checkpoint['ema_shadow']
+            print(f"Restored EMA state from checkpoint")
     
     # Training loop
     print("\nStarting training...")
